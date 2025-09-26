@@ -1,0 +1,124 @@
+1. What is Flask?
+
+Flask is a lightweight Python web framework used to build web applications and APIs.
+It’s known for being simple and flexible, making it ideal for beginners and small projects.
+
+Think of Flask as a toolkit that lets you handle web requests and return responses.
+
+2. What is REST?
+
+REST (Representational State Transfer) is an architectural style for designing networked applications (like APIs).
+
+Key ideas:
+
+Use standard HTTP methods (GET, POST, PUT, DELETE)
+
+Resources (like users, posts) are accessed using URLs
+
+Communicate using JSON or XML
+
+REST APIs are stateless and follow a predictable pattern for interacting with resources.
+
+3. Difference between GET and POST?
+Feature	GET	POST
+Purpose	Retrieve data	Send (create) data
+Data in URL?	Yes (query params)	No (data is in request body)
+Safe?	Yes (doesn’t change anything)	No (can change server state)
+Idempotent?	Yes	No
+4. How does a Flask route work?
+
+A Flask route maps a URL path to a Python function.
+
+@app.route('/hello')
+def say_hello():
+    return "Hello, world!"
+
+
+When someone visits /hello, Flask calls the say_hello() function and returns the response.
+
+You can also define methods like:
+
+@app.route('/users', methods=['POST'])
+
+5. What is request.json?
+
+request.json in Flask gives you the JSON data sent by the client in a request (usually in POST or PUT).
+
+Example:
+
+from flask import request
+
+data = request.json
+name = data['name']
+
+
+It’s a way to read incoming JSON data from the request body.
+
+6. What are status codes like 200, 404?
+
+These are HTTP status codes used to describe the result of an HTTP request.
+
+Code	Meaning	Description
+200	OK	Request was successful
+201	Created	Resource was successfully created
+400	Bad Request	Invalid input from client
+404	Not Found	Resource doesn’t exist
+500	Internal Server Error	Server-side error
+7. How do you run a Flask app?
+
+Save your code in a file, e.g., app.py
+
+Run from terminal:
+
+python app.py
+
+
+Visit: http://127.0.0.1:5000 in your browser or use Postman/curl
+
+8. What is JSON?
+
+JSON (JavaScript Object Notation) is a lightweight format for storing and exchanging data.
+
+Example:
+
+{
+  "name": "Alice",
+  "email": "alice@example.com"
+}
+
+
+Used widely in APIs for data transfer between client and server.
+
+9. How to test an API?
+
+Tools to test APIs:
+
+Postman – User-friendly GUI to test HTTP requests
+
+curl – Command-line tool
+
+Browser – Only for GET requests
+
+Automated testing – Using pytest, unittest, etc.
+
+Example using curl:
+
+curl -X POST http://localhost:5000/users -H "Content-Type: application/json" -d '{"name": "Bob", "email": "bob@example.com"}'
+
+10. Can we use a database instead of memory?
+
+Yes! In real-world applications, we should use a database to persist data.
+
+Popular options with Flask:
+
+SQLite (lightweight, good for beginners)
+
+PostgreSQL
+
+MySQL
+
+With Flask, you can use:
+
+SQLAlchemy (ORM for working with databases using Python objects)
+
+Flask-SQLAlchemy (extension to integrate with Flask easily)
